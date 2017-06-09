@@ -32,4 +32,6 @@ graphQLServer.use('/graphiql', graphiqlExpress({
   endpointURL: '/graphql',
 }));
 
+graphQLServer.get('/', (req, res) => res.json({ msg: "check /graphiql"}));
+
 graphQLServer.listen(GRAPHQL_PORT, () => console.log('server running'));
