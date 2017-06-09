@@ -67,7 +67,7 @@ export default {
         ({ date, close }): IStockHistory => ({ date, close })
       )
 
-      client.set(symbol, JSON.stringify(parsedHistory), 'EX', 60);
+      client.set(symbol, JSON.stringify(parsedHistory), 'EX', 60 * 60);
 
       return parsedHistory;
     }
