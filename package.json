@@ -8,10 +8,10 @@
   "scripts": {
     "start": "forever -c \"node -r dotenv/config\" ./lib/index.js",
     "heroku-postbuild": "npm run build",
-    "dev": "npm run clean && npm run build:live",
-    "build": "tsc",
+    "dev": "npm run build:live",
+    "build": "npm run clean && tsc",
     "build:live": "nodemon -r dotenv/config --exec ./node_modules/.bin/ts-node -- ./src/index.ts",
-    "clean": "rimraf ./lib",
+    "clean": "rimraf lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
