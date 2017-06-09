@@ -1,0 +1,11 @@
+# Node files
+node_modules
+
+# Debug logs
+*.log*
+
+#.env files
+*.env*
+
+#typescript outdir
+lib

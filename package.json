@@ -1,0 +1,45 @@
+{
+  "name": "apollo-server",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "types": "lib/index.js",
+  "author": "mkarabashev <mkarabashev@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "forever -c \"node -r dotenv/config\" ./lib/index.js",
+    "heroku-postbuild": "npm run build",
+    "dev": "npm run clean && npm run build:live",
+    "build": "tsc",
+    "build:live": "nodemon -r dotenv/config --exec ./node_modules/.bin/ts-node -- ./src/index.ts",
+    "clean": "rimraf ./lib",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "6.10.3",
+    "npm": "5.0.3"
+  },
+  "dependencies": {
+    "@types/body-parser": "^1.16.3",
+    "@types/cors": "^2.8.1",
+    "@types/node": "^7.0.21",
+    "@types/redis": "^2.6.0",
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.3",
+    "forever": "^0.15.3",
+    "graphql": "^0.9.6",
+    "graphql-server-express": "^0.7.2",
+    "graphql-tools": "^0.11.0",
+    "isomorphic-fetch": "^2.2.1",
+    "redis": "^2.7.1",
+    "rimraf": "^2.6.1",
+    "ts-node": "^3.0.4",
+    "tslib": "^1.7.1",
+    "typescript": "^2.3.2",
+    "yahoo-finance": "^0.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
