@@ -64,10 +64,10 @@ export default {
       );
 
       const parsedHistory = history.map(
-        ({ date, close }): IStockHistory => ({ date, close })
+        ({ date, close }): IStockHistory => ({ date: date.toString(), close })
       )
 
-      client.set(symbol, JSON.stringify(parsedHistory), 'EX', 60 * 60);
+      client.set(symbol, JSON.stringify(parsedHistory), 'EX', 60 * 60 * 6);
 
       return parsedHistory;
     }
