@@ -5,12 +5,10 @@ export interface IContext {
 }
 
 let client: redis.RedisClient | undefined;
-const REDIS_PORT = parseInt(process.env.REDIS_PORT);
-const REDIS_URL = process.env.REDIS_URL;
 
 export default async function makeContext(): Promise<IContext> {
   if(!client) {
-    client = await redis.createClient(REDIS_PORT, REDIS_URL, {
+    client = await redis.createClient(process.env.REDIS_URL, {
       retry_strategy: () => 3000
     });
 
