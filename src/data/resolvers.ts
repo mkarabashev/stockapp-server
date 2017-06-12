@@ -7,18 +7,24 @@ export interface IStock {
   symbol: string
 }
 
-export interface IStockHistory {
+export interface IStockBaseHistory {
+  date: string | Date,
+  close: number
+}
+
+export interface IStockHistory extends IStockBaseHistory {
   date: string,
   close: number
 }
 
-export interface IStockFullHistory extends IStockHistory {
+export interface IStockFullHistory extends IStockBaseHistory {
   open: number,
   high: number,
   low: number,
   volume: number,
   adjClose: number,
-  symbol: string
+  symbol: string,
+  date: Date
 }
 
 function makeYahooDate(offset: number = 0): string {
@@ -42,7 +48,7 @@ export default {
     stock: (_, { symbol }: IStock): IStock => ({ symbol }),
     stocks: (_, { symbols }: { symbols: string[] }): IStock[] => symbols.map(
       symbol => ({ symbol })
-    )
+    ),
   },
   Stock: {
     history: async ({ symbol }: IStock, _: {},

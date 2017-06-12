@@ -2,6 +2,7 @@ import 'newrelic';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
+import * as morgan from 'morgan';
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import { makeExecutableSchema } from 'graphql-tools';
 
@@ -12,11 +13,12 @@ import makeContext from './data/context';
 const GRAPHQL_PORT = process.env.PORT;
 //const WS_PORT = 8090;
 
-const graphQLServer = express()
+const graphQLServer = express();
+
+graphQLServer.use(morgan('tiny'))
 
 graphQLServer.use('*', cors({
-  origin: '*',
-  credentials: true
+  origin: process.env.ORIGIN
 }));
 
 const graphqlSchema = makeExecutableSchema({
