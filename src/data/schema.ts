@@ -6,7 +6,7 @@ const schema: string = `
 
   type StockHistory {
     date: String
-    close: Int
+    close: Float
   }
 
   type Query {
